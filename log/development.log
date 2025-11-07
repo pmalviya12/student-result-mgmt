@@ -8,3 +8,29 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 74ms (Views: 17.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.3ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (3.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-11-07 13:46:20.898118', '2025-11-07 13:46:20.898122') RETURNING "key" /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+Migrating to CreateResults (20251107134616)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "results" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "student_name" varchar, "subject" varchar, "marks" integer, "submitted_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251107134616') RETURNING "version" /*application='StudentResultMgmt'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+  [1m[36mResult Count (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "results" /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+Migrating to CreateDailyResultStats (20251107134709)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "daily_result_stats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date, "subject" varchar, "daily_low" integer, "daily_high" integer, "result_count" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251107134709') RETURNING "version" /*application='StudentResultMgmt'*/[0m
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+Migrating to CreateMonthlyAverages (20251107134732)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "monthly_averages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" date, "end_date" date, "subject" varchar, "avg_daily_low" float, "avg_daily_high" float, "total_results_count" integer, "included_days_count" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251107134732') RETURNING "version" /*application='StudentResultMgmt'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m

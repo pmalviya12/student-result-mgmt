@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_date: 2025-11-07
+  end_date: 2025-11-07
+  subject: MyString
+  avg_daily_low: 1.5
+  avg_daily_high: 1.5
+  total_results_count: 1
+  included_days_count: 1
+
+two:
+  start_date: 2025-11-07
+  end_date: 2025-11-07
+  subject: MyString
+  avg_daily_low: 1.5
+  avg_daily_high: 1.5
+  total_results_count: 1
+  included_days_count: 1
