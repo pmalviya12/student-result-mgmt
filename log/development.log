@@ -34,3 +34,15 @@ Migrating to CreateMonthlyAverages (20251107134732)
   [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20251107134732') RETURNING "version" /*application='StudentResultMgmt'*/[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='StudentResultMgmt'*/[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-11-11 09:42:40 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/pragati-malviya/.rvm/gems/ruby-3.2.2/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/pragati-malviya/.rvm/gems/ruby-3.2.2/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.4ms | GC: 0.4ms)
+Completed 200 OK in 34ms (Views: 4.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+  [1m[36mResult Count (5.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "results" /*application='StudentResultMgmt'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='StudentResultMgmt'*/[0m
+  [1m[36mResult Create (5.7ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES ('Pragati Malviya', 'Maths', 89, '2025-11-11 00:00:00', '2025-11-11 04:28:03.347102', '2025-11-11 04:28:03.347102') RETURNING "id" /*application='StudentResultMgmt'*/[0m
+  [1m[36mTRANSACTION (13.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='StudentResultMgmt'*/[0m
