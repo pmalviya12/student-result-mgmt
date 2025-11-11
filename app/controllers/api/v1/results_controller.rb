@@ -19,7 +19,7 @@ module Api
       private
 
       def result_params
-        params.require(:result).permit(:student_name, :subject, :marks, :timestamp)
+        params.require(:result).permit(:student_name, :subject, :marks, :submitted_at)
       end
     end
   end
