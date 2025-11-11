@@ -2,6 +2,11 @@ module Api
   module V1
     class ResultsController < ApplicationController
 
+      def index
+        render json: Result.all
+      end
+
+
       def create
         result = Result.new(result_params)
         if result.save
