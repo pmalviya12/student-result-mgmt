@@ -218,3 +218,16 @@ ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   [1m[36mDailyResultStat Create (0.4ms)[0m  [1m[32mINSERT INTO "daily_result_stats" ("date", "subject", "daily_low", "daily_high", "result_count", "created_at", "updated_at") VALUES ('2025-11-11', 'English', 89, 89, 1, '2025-11-11 09:17:09.266483', '2025-11-11 09:17:09.266483') RETURNING "id" /*application='StudentResultMgmt'*/[0m
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='StudentResultMgmt'*/[0m
   [1m[36mDailyResultStat Load (0.4ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT 11 /*application='StudentResultMgmt'*/[0m
+  [1m[36mDailyResultStat Load (0.7ms)[0m  [1m[34mSELECT "daily_result_stats".* FROM "daily_result_stats" /* loading for pp */ LIMIT 11 /*application='StudentResultMgmt'*/[0m
+Started GET "/" for 127.0.0.1 at 2025-11-24 14:36:52 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='StudentResultMgmt'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/pragati-malviya/.rvm/gems/ruby-3.2.2/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/pragati-malviya/.rvm/gems/ruby-3.2.2/gems/railties-8.0.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 5.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/students/" for 127.0.0.1 at 2025-11-24 14:36:59 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/students"):
+  

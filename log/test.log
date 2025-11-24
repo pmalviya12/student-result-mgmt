@@ -1,0 +1,126 @@
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "daily_result_stats"[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "daily_result_stats" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "date" date, "subject" varchar, "daily_low" integer, "daily_high" integer, "result_count" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "monthly_averages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "monthly_averages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "start_date" date, "end_date" date, "subject" varchar, "avg_daily_low" float, "avg_daily_high" float, "total_results_count" integer, "included_days_count" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "results"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "results" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "student_name" varchar, "subject" varchar, "marks" integer, "submitted_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20251107134732)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20251107134709),
+(20251107134616);[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'test', '2025-11-24 09:14:01.822337', '2025-11-24 09:14:01.822339') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '5a9f7dc0a72031556735e0a814ce45e98724227e', '2025-11-24 09:14:01.823307', '2025-11-24 09:14:01.823309') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (1.2ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Alice"], ["subject", "Math"], ["marks", 90], ["submitted_at", "2025-11-24 09:14:01.883453"], ["created_at", "2025-11-24 09:14:01.890216"], ["updated_at", "2025-11-24 09:14:01.890216"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.3ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Bob"], ["subject", "Science"], ["marks", 85], ["submitted_at", "2025-11-24 09:14:01.894660"], ["created_at", "2025-11-24 09:14:01.894878"], ["updated_at", "2025-11-24 09:14:01.894878"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:44:01 +0530
+Processing by Api::V1::ResultsController#index as HTML
+  [1m[36mResult Load (0.1ms)[0m  [1m[34mSELECT "results".* FROM "results"[0m
+Completed 200 OK in 20ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.5ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+Started POST "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:44:01 +0530
+Processing by Api::V1::ResultsController#create as HTML
+  Parameters: {"result"=>{"student_name"=>"Charlie", "subject"=>"History", "marks"=>"75", "submitted_at"=>"2025-11-24 09:14:01 UTC"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.3ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Charlie"], ["subject", "History"], ["marks", 75], ["submitted_at", "2025-11-24 09:14:01"], ["created_at", "2025-11-24 09:14:01.990322"], ["updated_at", "2025-11-24 09:14:01.990322"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+Started POST "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:44:01 +0530
+Processing by Api::V1::ResultsController#create as HTML
+  Parameters: {"result"=>{"student_name"=>"", "subject"=>"English", "marks"=>nil, "submitted_at"=>"2025-11-24 09:14:01 UTC"}}
+Completed 422 Unprocessable Content in 7ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.5ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Pragati"], ["subject", "Math"], ["marks", 90], ["submitted_at", "2025-11-24 09:14:37.947097"], ["created_at", "2025-11-24 09:14:37.953461"], ["updated_at", "2025-11-24 09:14:37.953461"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.4ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Kalash"], ["subject", "Science"], ["marks", 85], ["submitted_at", "2025-11-24 09:14:37.955194"], ["created_at", "2025-11-24 09:14:37.955371"], ["updated_at", "2025-11-24 09:14:37.955371"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:44:37 +0530
+Processing by Api::V1::ResultsController#index as HTML
+  [1m[36mResult Load (0.1ms)[0m  [1m[34mSELECT "results".* FROM "results"[0m
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+Started POST "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:44:38 +0530
+Processing by Api::V1::ResultsController#create as HTML
+  Parameters: {"result"=>{"student_name"=>"Charlie", "subject"=>"History", "marks"=>"75", "submitted_at"=>"2025-11-24 09:14:38 UTC"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.4ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Charlie"], ["subject", "History"], ["marks", 75], ["submitted_at", "2025-11-24 09:14:38"], ["created_at", "2025-11-24 09:14:38.014093"], ["updated_at", "2025-11-24 09:14:38.014093"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+Started POST "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:44:38 +0530
+Processing by Api::V1::ResultsController#create as HTML
+  Parameters: {"result"=>{"student_name"=>"", "subject"=>"English", "marks"=>nil, "submitted_at"=>"2025-11-24 09:14:38 UTC"}}
+Completed 422 Unprocessable Content in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.5ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Pragati"], ["subject", "Math"], ["marks", 90], ["submitted_at", "2025-11-24 09:15:45.662714"], ["created_at", "2025-11-24 09:15:45.669177"], ["updated_at", "2025-11-24 09:15:45.669177"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.2ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Kalash"], ["subject", "Science"], ["marks", 85], ["submitted_at", "2025-11-24 09:15:45.671040"], ["created_at", "2025-11-24 09:15:45.671251"], ["updated_at", "2025-11-24 09:15:45.671251"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:45:45 +0530
+Processing by Api::V1::ResultsController#index as HTML
+  [1m[36mResult Load (0.1ms)[0m  [1m[34mSELECT "results".* FROM "results"[0m
+Completed 200 OK in 15ms (Views: 1.3ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+Started POST "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:45:45 +0530
+Processing by Api::V1::ResultsController#create as HTML
+  Parameters: {"result"=>{"student_name"=>"Kalash", "subject"=>"History", "marks"=>"75", "submitted_at"=>"2025-11-24 09:15:45 UTC"}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mResult Create (0.3ms)[0m  [1m[32mINSERT INTO "results" ("student_name", "subject", "marks", "submitted_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["student_name", "Kalash"], ["subject", "History"], ["marks", 75], ["submitted_at", "2025-11-24 09:15:45"], ["created_at", "2025-11-24 09:15:45.728936"], ["updated_at", "2025-11-24 09:15:45.728936"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mResult Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mResult Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+Started POST "/api/v1/results" for 127.0.0.1 at 2025-11-24 14:45:45 +0530
+Processing by Api::V1::ResultsController#create as HTML
+  Parameters: {"result"=>{"student_name"=>"", "subject"=>"English", "marks"=>nil, "submitted_at"=>"2025-11-24 09:15:45 UTC"}}
+Completed 422 Unprocessable Content in 5ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mResult Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "results"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
